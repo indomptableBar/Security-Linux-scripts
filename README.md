@@ -5,7 +5,7 @@ Dans un context marqué par des attaques repétés (réguliere) à l'encontre de
 
 Voici quelques astuces permettant de rendre nos ordinateurs ou serveurs plus resiliant.
 
-Nous devons donc penser à notre independance et notre resilliance vis à vis des differents systemes d'exploitation et du monde qui nous entoure. 
+Nous devons donc penser à notre independance et notre resilliance vis à vis des differents systemes d'exploitation et au monde qui nous entoure. 
 
 Voici une liste compatibles avec les valeurs :
 

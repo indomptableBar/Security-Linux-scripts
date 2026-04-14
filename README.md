@@ -3,7 +3,7 @@
 
 Dans un context marqué par des attaques repétés (réguliere) à l'encontre de nos  grandes entreprises.
 
-Voici quelques astuces permettant de rendre nos ordinateurs ou serveurs plus resiliant.
+Voici quelques astuces permettant de rendre nos ordinateurs ou serveurs plus resilient.
 
 Nous devons donc penser à notre independance et notre resilliance vis à vis des differents systemes d'exploitation et au monde qui nous entoure. 
 

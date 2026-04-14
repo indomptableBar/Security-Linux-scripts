@@ -1,7 +1,39 @@
-# Security-Linux-scripts
+# Auteur : IndomptableBar
+# Context : Cyber Resilience
+
+Dans un context marqué par des attaques repétés (réguliere) à l'encontre de nos  grandes entreprises.
+
+Voici quelques astuces permettant de rendre nos ordinateurs ou serveurs plus resiliant.
+
+Nous devons donc penser à notre independance et notre resilliance vis à vis des differents systemes d'exploitation et du monde qui nous entoure. 
+
+Voici une liste compatibles avec les valeurs :
+
+- Debian : Développée par une communauté internationale, mais très respectée pour sa transparence et son indépendance. Elle est souvent considérée comme une base saine pour d’autres distributions.
+
+- Tails : Basée sur Debian, conçue pour la protection de la vie privée et l’anonymat. Elle est souvent recommandée pour les utilisateurs soucieux de la sécurité.
+
+- Qubes OS : Développée en Pologne, axée sur la sécurité par l’isolation des applications. Très appréciée des experts en sécurité.
+
+- OpenBSD (pas Linux, mais Unix) : Connu pour son approche radicale de la sécurité et de la transparence. Développé au Canada, mais très utilisé en Europe.
+
+Comment limiter les risques de failles ou de backdoors ?
+
+- Utiliser des distributions axées sur la sécurité : Tails, Qubes OS, Whonix.
+- Éviter les logiciels propriétaires : Privilégier les logiciels open source et audités.
+- Mettre à jour régulièrement : Les failles sont souvent corrigées rapidement dans les distributions actives.
+- Utiliser des outils de chiffrement : LUKS pour le disque, GPG pour les communications, etc.
+
+5. Attention aux garanties absolues
+- Aucun système ne peut garantir à 100% l’absence de failles ou de backdoors, surtout si vous utilisez du matériel (CPU, firmware) produit par des entreprises de l'autre coté de l'atlantique ou qui detienne une muraille.
+
+ La confiance repose sur la transparence du code, la communauté et les audits indépendants.
+ 
+- Les failles de type zero days ont toujours existés et existerons de la creation meme hardware ou software.
+
+# Scripts Security-Linux-scripts
+
 Les scripts permettant d'avoir une securité plus efficace sur les systemes linux
-
-
 
 ====
 
@@ -44,3 +76,5 @@ Si tu veux une vraie défense solide :
 ====
 
 Note : un simple antivirus ou script basé sur logs classiques ne suffit pas.
+
+Pour un monde libre : "Ich bin ein Berliner!"

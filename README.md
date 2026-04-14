@@ -25,7 +25,7 @@ Comment limiter les risques de failles ou de backdoors ?
 - Utiliser des outils de chiffrement : LUKS pour le disque, GPG pour les communications, etc.
 
 5. Attention aux garanties absolues
-- Aucun système ne peut garantir à 100% l’absence de failles ou de backdoors, surtout si vous utilisez du matériel (CPU, firmware) produit par des entreprises de l'autre coté de l'atlantique ou qui detienne une muraille.
+- Aucun système ne peut garantir à 100% l’absence de failles ou de backdoors, surtout si vous utilisez du matériel (CPU, firmware) produit par des entreprises etatique.
 
  La confiance repose sur la transparence du code, la communauté et les audits indépendants.
  

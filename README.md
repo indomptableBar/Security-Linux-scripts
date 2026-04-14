@@ -1,13 +1,4 @@
 # Auteur : IndomptableBar
-# Context : Cyber Resilience
-
-Dans un context marqué par des attaques repétés (réguliere) à l'encontre de nos  grandes entreprises.
-
-Voici quelques astuces permettant de rendre nos ordinateurs ou serveurs plus resilient.
-
-Nous devons donc penser à notre independance et notre resilliance vis à vis des differents systemes d'exploitation et au monde qui nous entoure. 
-
-Voici une liste compatibles avec les valeurs :
 
 - Debian : Développée par une communauté internationale, mais très respectée pour sa transparence et son indépendance. Elle est souvent considérée comme une base saine pour d’autres distributions.
 
@@ -25,7 +16,7 @@ Comment limiter les risques de failles ou de backdoors ?
 - Utiliser des outils de chiffrement : LUKS pour le disque, GPG pour les communications, etc.
 
 5. Attention aux garanties absolues
-- Aucun système ne peut garantir à 100% l’absence de failles ou de backdoors, surtout si vous utilisez du matériel (CPU, firmware) produit par des entreprises etatique.
+- Aucun système ne peut garantir à 100% l’absence de failles ou de backdoors, surtout si vous utilisez du matériel (CPU, firmware) produit par les constructeurs ou les architectes.
 
  La confiance repose sur la transparence du code, la communauté et les audits indépendants.
  

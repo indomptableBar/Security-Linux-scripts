@@ -1,0 +1,20 @@
+[ ENDPOINT ]
+   |
+   | logs / events
+   v
+[ COLLECTE ]
+   - auditd
+   - journald
+   - Falco (eBPF)
+   |
+   v
+[ PIPELINE ]
+   - Filebeat
+   |
+   v
+[ ANALYSE ]
+   - Elasticsearch
+   |
+   v
+[ VISUALISATION ]
+   - Kibana

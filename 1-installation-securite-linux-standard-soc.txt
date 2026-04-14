@@ -1,3 +1,5 @@
+# Script adapter au besoin avant de le lancer.
+# Script basic permettant de mettre en place rapidement un SOC simple.( 
 ## Phase 1. Installation des programmes necessaire pour mettre en place une securisation de serveurs linux.
 # Stack ELK (logs + visualisation)
 
@@ -90,3 +92,25 @@ sudo systemctl enable filebeat --now
 
 # Voici l'acces a votre dashboard
 http://localhost:5601
+
+# Phase 5 Alerting simple
+# Voici Exemple script alerte :
+
+#!/bin/bash
+
+tail -F /var/log/syslog | while read line; do
+    if echo "$line" | grep -i "falco"; then
+        echo "[ALERT] $line"
+    fi
+done
+
+# Phase de Hardening système (IMPORTANT)
+# Désactiver io_uring
+echo "kernel.io_uring_disabled = 1" >> /etc/sysctl.conf
+sysctl -p
+
+# Limiter accès /proc
+echo "kernel.kptr_restrict=2" >> /etc/sysctl.conf
+
+# Désactiver core dumps
+echo "* hard core 0" >> /etc/security/limits.conf

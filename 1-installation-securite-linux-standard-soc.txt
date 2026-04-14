@@ -1,0 +1,92 @@
+## Phase 1. Installation des programmes necessaire pour mettre en place une securisation de serveurs linux.
+# Stack ELK (logs + visualisation)
+
+sudo apt update
+sudo apt install -y curl apt-transport-https gnupg
+
+# Ajouter Elastic repo
+curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/elastic.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" \
+| sudo tee /etc/apt/sources.list.d/elastic.list
+
+sudo apt update
+
+# Installer
+`sudo apt install -y elasticsearch kibana filebeat`
+
+# Démarrage
+`systemctl enable elasticsearch --now`
+`systemctl enable kibana --now`
+
+
+## Phase 2. Collecte système (auditd)
+`sudo apt install auditd audispd-plugins`
+
+# Règles utiles (détection type RingReaper)
+`sudo nano /etc/audit/rules.d/soc.rules`
+
+`-w /etc/passwd -p r -k passwd_access`
+`-w /proc -p r -k proc_scan`
+`-w /dev/pts -p rwxa -k pts_access`
+`-a always,exit -F arch=b64 -S execve -k exec_monitor`
+`-a always,exit -F arch=b64 -S openat -k file_open`
+
+`sudo augenrules --load`
+
+## Phase 3. Détection temps réel (Falco – CRUCIAL)
+
+`curl -s https://falco.org/repo/falcosecurity-packages.asc | sudo apt-key add -`
+
+`echo "deb https://download.falco.org/packages/deb stable main" \
+| sudo tee /etc/apt/sources.list.d/falco.list`
+
+`sudo apt update`
+`sudo apt install -y falco`
+
+## Règles Falco spécifiques (anti RingReaper)
+sudo nano /etc/falco/falco_rules.local.yaml
+
+---
+- rule: Suspicious proc access
+  desc: Access to /proc outside normal tools
+  condition: >
+    open_read and fd.name startswith /proc and
+    not proc.name in (ps, top, htop)
+  output: "Suspicious /proc access (user=%user.name command=%proc.cmdline)"
+  priority: WARNING
+
+- rule: Hidden network activity
+  desc: Network without common tools
+  condition: >
+    outbound and not proc.name in (curl, wget, apt, ssh)
+  output: "Hidden network activity (command=%proc.cmdline)"
+  priority: CRITICAL
+
+- rule: Self deleting binary
+  desc: Binary deleted after execution
+  condition: >
+    proc.name exists and evt.type = unlink and proc.exe exists
+  output: "Self deleting binary detected"
+  priority: CRITICAL
+---
+
+## Phase 4. Filebeat (pipeline vers Elasticsearch)
+sudo nano /etc/filebeat/filebeat.yml
+
+---
+filebeat.inputs:
+- type: log
+  paths:
+    - /var/log/syslog
+    - /var/log/auth.log
+    - /var/log/audit/audit.log
+
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+---
+
+`sudo systemctl enable filebeat --now`
+
+# Voici l'acces a votre dashboard
+http://localhost:5601
